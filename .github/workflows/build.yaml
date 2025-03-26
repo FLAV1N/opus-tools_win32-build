@@ -46,8 +46,8 @@ jobs:
       FLAC_SOL_FILE: "src/libFLAC++/FLAC++.vcxproj"
       FLAC_CMAKE_X86: "-DOGG_INCLUDE_DIR=\"${{ github.workspace }}/lib/libogg/include\" -DOGG_LIBRARY=\"${{ github.workspace }}/lib/libogg/_build/Win32/Release/ogg.lib\" -DINSTALL_MANPAGES=OFF"
       FLAC_CMAKE_X64: "-DOGG_INCLUDE_DIR=\"${{ github.workspace }}/lib/libogg/include\" -DOGG_LIBRARY=\"${{ github.workspace }}/lib/libogg/_build/x64/Release/ogg.lib\" -DINSTALL_MANPAGES=OFF"
-      FLAC_MSBUILD_CMD_X86: "/maxcpucount /property:Configuration=Release,Platform=Win32 /p:AdditionalOptions=\"/MT\""
-      FLAC_MSBUILD_CMD_X64: "/maxcpucount /property:Configuration=Release,Platform=x64 /p:AdditionalOptions=\"/MT\""
+      FLAC_MSBUILD_CMD_X86: "/maxcpucount /property:Configuration=Release,Platform=Win32"
+      FLAC_MSBUILD_CMD_X64: "/maxcpucount /property:Configuration=Release,Platform=x64"
 
       OPUS-TOOLS_SOL_FILE: opus-tools.sln
       OPUS-TOOLS_MSBUILD_CMD_X86: "/maxcpucount /property:Configuration=Release,Platform=Win32"
@@ -136,7 +136,7 @@ jobs:
       - name: Prepare flac
         run: |
           cd "lib\flac"
-          git checkout tags/${{ vars.FLAC_GIT_TAG }}
+          git checkout ffc5bf566b19c11df269e8256bc96829a40c31af
           mkdir "_build" && cd "_build"
           mkdir "Win32" && cd "Win32"
           cmake ${{ env.CMAKE_GENERATOR_X86 }} ${{ env.CMAKE_COMMON_DEFINES }} ${{ env.FLAC_CMAKE_X86 }} ..\..\
