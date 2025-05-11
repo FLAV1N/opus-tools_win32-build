@@ -133,7 +133,6 @@ jobs:
       - name: Prepare flac
         run: |
           cd "lib\flac"
-          git checkout ffc5bf566b19c11df269e8256bc96829a40c31af
           mkdir "_build" && cd "_build"
           mkdir "Win32" && cd "Win32"
           cmake ${{ env.CMAKE_GENERATOR_X86 }} ${{ env.CMAKE_COMMON_DEFINES }} ${{ env.FLAC_CMAKE_X86 }} ..\..\
